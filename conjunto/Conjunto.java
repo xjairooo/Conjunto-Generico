@@ -1,5 +1,6 @@
 package conjunto;
 
+// Clase generica
 public class Conjunto<T> {
 	private T[] data;
 	private int p;
@@ -58,10 +59,13 @@ public class Conjunto<T> {
 	}
 
 	/**
+	 * Verifica si un elemento esta dentro del conjunto
 	 * Retorna si un elemnto esta en el conjunto
 	 * 
+	 * @see insertarElemento
 	 */
-	private boolean find(T find) {
+	private boolean find(T elemento) {
+	
 		return false;
 	}
 
