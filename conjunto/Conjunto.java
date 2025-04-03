@@ -15,6 +15,12 @@ public class Conjunto<T> {
 	 * 
 	 */
 	public void insertarElemento(T d) {
+		if (p < data.length) {
+			if (!find(d)) {
+				data[p] = d;
+				p++;
+			}
+		}
 		
 	}
 
