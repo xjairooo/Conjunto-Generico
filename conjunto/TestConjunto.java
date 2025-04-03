@@ -9,6 +9,7 @@ public class TestConjunto {
 		Conjunto<Integer> c2 = new Conjunto<Integer>(3);
 		
 		System.out.println("tes");
+		System.out.println("Q pek");
 		c1.insertarElemento(10);
 		c1.insertarElemento(20);
 		c1.insertarElemento(30);
