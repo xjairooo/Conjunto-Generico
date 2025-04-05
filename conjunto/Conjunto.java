@@ -2,27 +2,34 @@ package conjunto;
 
 // Clase generica
 public class Conjunto<T> {
-	private T[] data;
-	private int p;
+	private T[] elementos;
+	private int cantidadElementos;
 
 	public Conjunto(int capacity) {
-		data = (T[]) new Object[capacity]; // legal, but compiler warning
-		p = 0;
+		elementos = (T[]) new Object[capacity]; // legal, but compiler warning
+		cantidadElementos = 0;
 	}
 
 	/**
-	 * Inserta un elemento al conjunto si el mismo no esta
-	 * Si se supera la capacidad del conjunto no hace nada
+	 * Inserta un elemento al conjunto si no está presente y si hay espacio
+	 * disponible.
 	 * 
+	 * Condiciones:
+	 * - Si el elemento ya existe en el conjunto, no se realiza ninguna acción.
+	 * - Si el conjunto ha alcanzado su capacidad máxima, no se realiza ninguna
+	 * acción.
+	 * 
+	 * @param elemento El elemento que se desea insertar en el conjunto.
 	 */
-	public void insertarElemento(T d) {
-		if (p < data.length) {
-			if (!find(d)) {
-				data[p] = d;
-				p++;
-			}
+	public void insertarElemento(T elemento) {
+		// Verifica que haya espacio disponible y que el elemento no esté ya en el
+		// conjunto
+		if (cantidadElementos < elementos.length && !buscarElemento(elemento)) {
+			// Agrega el elemento al conjunto
+			elementos[cantidadElementos] = elemento;
+			// Incrementa el contador de elementos
+			cantidadElementos++;
 		}
-		
 	}
 
 	/**
@@ -64,8 +71,12 @@ public class Conjunto<T> {
 	 * 
 	 * @see insertarElemento
 	 */
-	private boolean find(T elemento) {
-	
+	private boolean buscarElemento(T elemento) {
+		for (int i = 0; i < cantidadElementos; i++) {
+			if (elementos[i].equals(elemento)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
