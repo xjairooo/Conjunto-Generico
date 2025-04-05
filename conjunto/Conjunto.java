@@ -15,14 +15,14 @@ public class Conjunto<T> {
 	 * disponible.
 	 * 
 	 * Condiciones:
-	 * - Si el elemento ya existe en el conjunto, no se realiza ninguna acción.
-	 * - Si el conjunto ha alcanzado su capacidad máxima, no se realiza ninguna
-	 * acción.
+	 * - Si el elemento ya existe en el conjunto, no se realiza ninguna accion.
+	 * - Si el conjunto ha alcanzado su capacidad maxima, no se realiza ninguna
+	 * accion.
 	 * 
 	 * @param elemento El elemento que se desea insertar en el conjunto.
 	 */
 	public void insertarElemento(T elemento) {
-		// Verifica que haya espacio disponible y que el elemento no esté ya en el
+		// Verifica que haya espacio disponible y que el elemento no este ya en el
 		// conjunto
 		if (cantidadElementos < elementos.length && !buscarElemento(elemento)) {
 			// Agrega el elemento al conjunto
@@ -36,8 +36,8 @@ public class Conjunto<T> {
 	 * Retorna la cantidad de elementos de un conjunto
 	 * 
 	 */
-	public int cardinalidad() {
-		return 0;
+	public int tamanioConjunto() {
+		return cantidadElementos;
 	}
 
 	/**
