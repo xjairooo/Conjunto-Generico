@@ -8,9 +8,10 @@ public class Conjunto<T> {
 	 * Constructor de la clase Conjunto. Inicializa un conjunto vacio con una
 	 * capacidad maxima de 10 elementos.
 	 */
-	public Conjunto(int capacity) {
-		elementos = (T[]) new Object[capacity]; // legal, but compiler warning
-		cantidadElementos = 0;
+	// Constructor de la clase Conjunto. Recibe la capacidad máxima del conjunto.
+	public Conjunto(int capacidad) {
+	    elementos = (T[]) new Object[capacidad]; // Legal, pero lanza una advertencia del compilador
+	    cantidadElementos = 0; // Inicialmente no hay elementos en el conjunto
 	}
 
 	/**
@@ -99,8 +100,17 @@ public class Conjunto<T> {
 	 * 
 	 */
 	public boolean iguales(Conjunto<T> otroConjunto) {
-		return true;
+		if (this.cantidadElementos != otroConjunto.cantidadElementos) { // verifica si ambos conjuntos [] tienen diferentes dimensiones
+			return false; //retorna falso
+		}
+		for (int i = 0; i < this.cantidadElementos; i++) { //si ambos tienen la misma dimension osea cantidad de elementos, vamos comprobando si ambos conjuntos tienen los mismo elementos
+			if (otroConjunto.buscarElemento(this.elementos[i])) { //llamo al metodo "buscarElementos" usando el equals para saber si tengo o no el elemento en ambos conjuntos
+				return false;
+			}
+		}
+		return true; //si pudo pasar por ambas condiciones (verificacion de misma cantidad de elementos) y (mismo elementos) entonces retorna true
 	}
+
 
 	/**
 	 * Verifica si un elemento esta dentro del conjunto
@@ -119,7 +129,19 @@ public class Conjunto<T> {
 
 	@Override
 	public String toString() {
-		return "";
-	}
+		StringBuilder cadena = new StringBuilder(); //creo un objeto cadena para juntar los elementos
+		cadena.append("{"); //imprimo la llave "{" para abrir y comenzar a armar la cadena de elementos del Conjunto
+		for (int i = 0; i < cantidadElementos; i++) {
+			cadena.append(elementos[i]); //pongo el elemento en la cadena e imprimo
+			if (i < cantidadElementos - 1) { /*uso una condicion if para cuando llego al anteultimo elemento de mi array deje de imprimir una coma
+											  cuando llegue al ultimo elemento dejo de imprimir una coma y salgo del for y llegando al objeto cadena para imprimir una llave que cierra "}"*/ 
+					cadena.append(", "); //son los separadores 
+			}
+		}
+		cadena.append("}"); //cierro con llave la cadena
+		return cadena.toString(); //retorno la cadena ya completada con todo los elementos ya imprimidos
+		}
 
 }
+
+
